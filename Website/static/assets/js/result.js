@@ -92,3 +92,11 @@ function changeSlide(elm) {
   $(".slideshow-thumbnails").removeClass("active");
   $(".slideshow-thumbnails").eq(elm.index()).addClass("active");
 }
+
+document.getElementById("print-button").addEventListener("click", function () {
+  var printableSection = document.getElementById("printable-section").innerHTML;
+  var originalContent = document.body.innerHTML;
+  document.body.innerHTML = printableSection;
+  window.print();
+  document.body.innerHTML = originalContent;
+});
