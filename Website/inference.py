@@ -3,7 +3,7 @@
 import subprocess
 
 def run_detection(weights, image):
-    cmd = f"python static/yolov5/detect.py --data static/yolov5/dataset.yaml --device cpu --weights {weights} --source {image} --project static/"
+    cmd = f"python static/yolov5/detect.py --data static/yolov5/dataset.yaml --device cpu --weights {weights} --source {image} --project static/ --save-txt"
     result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return result.stdout, result.stderr
 
