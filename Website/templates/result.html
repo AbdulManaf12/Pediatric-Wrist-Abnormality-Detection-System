@@ -10,6 +10,10 @@
 
     <!-- Favicons -->
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
       href="{{ url_for('static', filename='assets/img/favicon.png')}}"
       rel="icon"
     />
@@ -105,15 +109,7 @@
     <!-- Main -->
     <main>
       <!-- Result Section -->
-      <section
-        class="w-75 mx-auto rounded"
-        style="
-          margin-top: 7em;
-          background-color: rgb(172, 184, 183);
-          height: 33em;
-          padding-top: 0%;
-        "
-      >
+      <section class="w-75 mx-auto rounded imageshower-predict">
         <div class="image-magnifier">
           <div id="lens"></div>
           <div id="slideshow-items-container">
@@ -131,6 +127,79 @@
             />
           </div>
           <div id="result"></div>
+        </div>
+        <div class="table-section">
+          <h3 class="report-heading">Medical Report</h3>
+          <table class="patient-info">
+            <tr>
+              <td class="bold">Patient Name:</td>
+              <td>{{ patient_name }}</td>
+            </tr>
+            <tr>
+              <td class="bold">Age:</td>
+              <td>{{ age }}</td>
+
+              <td class="bold dragsome">Gender:</td>
+              <td>{{ gender }}</td>
+            </tr>
+            <tr>
+              <td class="bold">Result Type:</td>
+              <td>{{ result_type }}</td>
+
+              <td class="bold dragsome">Wrist Side:</td>
+              <td>{{ side }}</td>
+            </tr>
+            <tr>
+              <td class="bold">Projection:</td>
+              <td>{{ projection }}</td>
+
+              <td class="bold dragsome">Date of Scan:</td>
+              <td>{{ date_of_scan }}</td>
+            </tr>
+          </table>
+
+          <hr />
+          <h5 class="report-heading">Abnormalities Detected:</h5>
+
+          <table class="anomaly-table">
+            <tr class="tr">
+              <th class="th">Name of Class</th>
+              <th class="th">Number of Anomalies</th>
+              <th class="th">
+                <span
+                  id="tooltip"
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  Annotations
+                  <i class="fa fa-info-circle" style="margin-left: 5px"></i>
+                  <span class="tooltiptext">(x_min, y_min, x_max, y_max)</span>
+                </span>
+              </th>
+            </tr>
+            {% for class_name in annotations.keys() %} {% if
+            annotations[class_name] %} {% set num_annotations =
+            annotations[class_name]|length %}
+            <tr class="tr">
+              <td class="td">{{ class_name }}</td>
+              <td class="td">{{ num_annotations }}</td>
+              <td class="td">{{ annotations[class_name] }}</td>
+            </tr>
+            {% endif %} {% endfor %}
+          </table>
+
+          <p class="disclaimer">
+            The medical scan was processed using an artificial intelligence
+            algorithm that analyzed the image for abnormalities. While the
+            algorithm is highly accurate, the results should be reviewed and
+            validated by a trained medical professional before being used for
+            diagnosis or treatment decisions. Please consult with a qualified
+            medical professional for further evaluation and treatment
+            recommendations.
+          </p>
         </div>
       </section>
       <!-- End Result -->

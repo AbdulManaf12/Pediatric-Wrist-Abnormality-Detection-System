@@ -1924,6 +1924,95 @@ section {
   border: 5px dotted black;
   cursor: pointer;
 }
-.image-text{
+.image-text {
   margin-top: 40%;
+}
+.table-section {
+  font-family: Arial, sans-serif;
+  padding: 1em;
+  overflow: auto;
+  margin-left: 1em;
+}
+.patient-info {
+  margin-left: 5em;
+}
+.table-section::-webkit-scrollbar {
+  width: 0.5em; /* set the width of the scrollbar */
+}
+
+.table-section::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.table-section::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.imageshower-predict {
+  display: flex;
+  flex-direction: row;
+  margin-top: 7em;
+  height: 38em;
+  padding-top: 0%;
+}
+
+@media (max-width: 800px) {
+  .imageshower-predict {
+    flex-direction: column;
+    height: 80em;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+.report-heading {
+  color: #0072c6 !important;
+  text-align: center;
+}
+.anomaly-table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: center;
+}
+.th,
+.td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.th {
+  text-align: left;
+  background-color: #3fbbc0;
+  color: white;
+}
+.tr {
+  background-color: #f2f2f2;
+}
+p.disclaimer {
+  font-size: 12px;
+  color: #666;
+}
+span#tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+span#tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+span#tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.bold {
+  font-weight: bold;
+}
+.dragsome {
+  padding-left: 2em;
 }

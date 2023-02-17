@@ -1,7 +1,9 @@
 from flask import Flask, request, render_template
 from inference import run
+from extract_bbox_info import yolo_to_dict
 import os
 import shutil
+import datetime
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './static'
@@ -13,9 +15,9 @@ def index():
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    remove_files()
+    # remove_files()
     if request.method == 'POST':
-        name = request.form['Name']
+        patient_name = request.form['Name']
         age = request.form['Age']
         gender = request.form['Gender']
         result_type = request.form['ResultType']
@@ -28,8 +30,21 @@ def predict():
             file.save(filename)
         
         if result_type == 'detection':
-            run()
-            return render_template('result.html')
+            # run()
+            now = datetime.datetime.now()
+            # format the date string
+            date_of_scan = now.strftime("%B %d, %Y")
+    
+            annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
+
+            # Render the medical report template with the data
+            return render_template('result.html', 
+                                patient_name=patient_name, 
+                                age=age, 
+                                gender=gender, result_type=result_type,
+                                side=side,projection=projection,
+                                date_of_scan=date_of_scan, 
+                                annotations=annotations)
 
     return render_template('index.html')
 
@@ -43,5 +58,7 @@ def remove_files():
         shutil.rmtree('static/exp')
     if os.path.exists('input-image.png'):
         os.remove('input-image.png')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
