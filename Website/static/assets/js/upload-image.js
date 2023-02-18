@@ -40,3 +40,9 @@ preview.addEventListener("click", function () {
 /**
  * End of this section works for loading an image
  */
+const form = document.getElementById("form-for-prediction");
+const loader = document.querySelector(".loaderOfImage");
+
+form.addEventListener("submit", (event) => {
+  loader.style.display = "block";
+});
