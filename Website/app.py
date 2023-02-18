@@ -15,7 +15,7 @@ def index():
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    # remove_files()
+    remove_files()
     if request.method == 'POST':
         patient_name = request.form['Name']
         age = request.form['Age']
@@ -29,15 +29,11 @@ def predict():
             filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
             file.save(filename)
         
-        if result_type == 'detection':
-            # run()
+        if result_type == 'Detection':
+            run()
             now = datetime.datetime.now()
-            # format the date string
             date_of_scan = now.strftime("%B %d, %Y")
-    
             annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
-
-            # Render the medical report template with the data
             return render_template('result.html', 
                                 patient_name=patient_name, 
                                 age=age, 

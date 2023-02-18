@@ -115,6 +115,10 @@
       >
         <div class="image-magnifier">
           <div id="lens"></div>
+          <label class="switch">
+            <input id="image-type" type="checkbox" checked />
+            <span class="slider round"></span>
+          </label>
           <div id="slideshow-items-container">
             <img
               class="slideshow-items active predicted-image"
@@ -126,35 +130,35 @@
         </div>
         <div class="table-section">
           <h3 class="report-heading">
-            Diagnose Report
+            Diagnosis Report
             <span><i class="fa fa-print" id="print-button"></i> </span>
           </h3>
           <br />
           <table class="patient-info">
             <tr>
               <td class="bold">Patient Name:</td>
-              <td>{{ patient_name }}</td>
+              <td class="dragfromleft-1">{{ patient_name }}</td>
             </tr>
             <tr>
               <td class="bold">Age:</td>
-              <td>{{ age }}</td>
+              <td class="dragfromleft-1">{{ age }}</td>
 
-              <td class="bold dragsome">Gender:</td>
-              <td>{{ gender }}</td>
+              <td class="bold dragfromleft-2">Gender:</td>
+              <td class="dragfromleft-1">{{ gender }}</td>
             </tr>
             <tr>
               <td class="bold">Result Type:</td>
-              <td>{{ result_type }}</td>
+              <td class="dragfromleft-1">{{ result_type }}</td>
 
-              <td class="bold dragsome">Wrist Side:</td>
-              <td>{{ side }}</td>
+              <td class="bold dragfromleft-2">Wrist Side:</td>
+              <td class="dragfromleft-1">{{ side }}</td>
             </tr>
             <tr>
               <td class="bold">Projection:</td>
-              <td>{{ projection }}</td>
+              <td class="dragfromleft-1">{{ projection }}</td>
 
-              <td class="bold dragsome">Date of Scan:</td>
-              <td>{{ date_of_scan }}</td>
+              <td class="bold dragfromleft-2">Date of Scan:</td>
+              <td class="dragfromleft-1">{{ date_of_scan }}</td>
             </tr>
           </table>
 
@@ -163,8 +167,8 @@
 
           <table class="anomaly-table">
             <tr class="tr">
-              <th class="th">Name of Class</th>
-              <th class="th">Number of Anomalies</th>
+              <th class="th" style="width: 8em">Name of Class</th>
+              <th class="th" style="width: 12em">Number of Anomalies</th>
               <th class="th">
                 <span
                   id="tooltip"
@@ -172,6 +176,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    width: 20em
                   "
                 >
                   Annotations
@@ -450,5 +455,17 @@
     <!-- Template Main JS File -->
     <script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
     <script src="{{ url_for('static', filename='assets/js/result.js')}}"></script>
+    <script>
+      const toggleBtn = document.getElementById("image-type");
+      const myImg = document.getElementsByClassName("predicted-image")[0];
+      toggleBtn.addEventListener("click", function () {
+        console.log("yes");
+        if (myImg.src.includes("exp/input-image.png")) {
+          myImg.src = "{{url_for('static', filename='input-image.png')}}";
+        } else {
+          myImg.src = "{{url_for('static', filename='exp/input-image.png')}}";
+        }
+      });
+    </script>
   </body>
 </html>
