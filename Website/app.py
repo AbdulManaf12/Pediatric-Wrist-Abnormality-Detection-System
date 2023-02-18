@@ -15,7 +15,7 @@ def index():
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    remove_files()
+    # remove_files()
     if request.method == 'POST':
         patient_name = request.form['Name']
         age = request.form['Age']
@@ -28,7 +28,7 @@ def predict():
             filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
             file.save(filename)
         
-        run()
+        # run()
         now = datetime.datetime.now()
         date_of_scan = now.strftime("%B %d, %Y")
         annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
