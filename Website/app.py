@@ -15,7 +15,7 @@ def index():
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    # remove_files()
+    remove_files()
     if request.method == 'POST':
         patient_name = request.form['Name']
         age = request.form['Age']
@@ -28,7 +28,7 @@ def predict():
             filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
             file.save(filename)
         
-        # run()
+        run()
         now = datetime.datetime.now()
         date_of_scan = now.strftime("%B %d, %Y")
         annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
@@ -48,8 +48,11 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def remove_files():
-    if os.path.exists('static/exp'):
-        shutil.rmtree('static/exp')
+    for subdir in os.listdir('static/'):
+        subdir_path = os.path.join('static/', subdir)
+        if 'exp' in subdir and os.path.isdir(subdir_path):
+            shutil.rmtree(subdir_path)
+
     if os.path.exists('input-image.png'):
         os.remove('input-image.png')
 
