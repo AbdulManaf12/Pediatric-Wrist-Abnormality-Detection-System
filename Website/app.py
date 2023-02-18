@@ -20,7 +20,6 @@ def predict():
         patient_name = request.form['Name']
         age = request.form['Age']
         gender = request.form['Gender']
-        result_type = request.form['ResultType']
         side = request.form['Side']
         projection = request.form['Projection']
         file = request.files.get('input-image')
@@ -29,18 +28,17 @@ def predict():
             filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
             file.save(filename)
         
-        if result_type == 'Detection':
-            run()
-            now = datetime.datetime.now()
-            date_of_scan = now.strftime("%B %d, %Y")
-            annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
-            return render_template('result.html', 
-                                patient_name=patient_name, 
-                                age=age, 
-                                gender=gender, result_type=result_type,
-                                side=side,projection=projection,
-                                date_of_scan=date_of_scan, 
-                                annotations=annotations)
+        run()
+        now = datetime.datetime.now()
+        date_of_scan = now.strftime("%B %d, %Y")
+        annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
+        return render_template('result.html', 
+                            patient_name=patient_name, 
+                            age=age, 
+                            gender=gender,
+                            side=side,projection=projection,
+                            date_of_scan=date_of_scan, 
+                            annotations=annotations)
 
     return render_template('index.html')
 
