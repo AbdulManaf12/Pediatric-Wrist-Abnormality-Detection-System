@@ -187,10 +187,12 @@ h6 {
   color: #555555;
 }
 
-#header .logo img {
-  max-height: 40px;
+#header {
+  max-height: 100px;
 }
-
+.logo img{
+  max-height: 80px;
+}
 /**
 * Appointment Button
 */
@@ -1970,7 +1972,6 @@ section {
   .image-magnifier {
     text-align: center;
   }
-  
 }
 
 body {
