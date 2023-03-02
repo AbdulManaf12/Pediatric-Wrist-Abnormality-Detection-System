@@ -6,40 +6,227 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuPage"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/MenuPage"/>
+        android:text="PEDIATRIC WRIST ANOMALY DETECTION"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/my_gray"
+        android:background="@color/my_blue"
+        android:fontFamily="@font/open_sans_bold"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-650dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="26dp"
+        android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="4dp">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="5dp">
 
-            <ImageView
+            <!--UTILITIES-->
+            <TextView
+                android:id="@+id/utilities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/my_gray"
-                android:src="@drawable/DICOM_to_PNG"
-                android:layout_marginBottom="10dp"/>
+                android:text="UTILITIES"
+                android:textSize="26sp"
+                android:textColor="@color/my_blue"
+                android:textStyle="bold"
+                android:fontFamily="@font/open_sans_bold"
+                android:layout_marginBottom="15dp"/>
 
-            <ImageView
+            <!-- DICOM to PNG -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:background="@color/my_gray"
-                android:src="@drawable/Edit_Image"/>
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/conversion_image"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/dicom_to_png_headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DICOM to PNG"
+                        android:textSize="26sp"
+                        android:textColor="@color/my_blue"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:id="@+id/dicom_to_png_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Transforming medical images into clear visuals"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/open_sans_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Edit Image -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/my_gray">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_image"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/edit_image_headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EDIT IMAGE"
+                        android:textSize="26sp"
+                        android:textColor="@color/my_blue"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:id="@+id/edit_image_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enhancing medical imaging for clearer diagnoses"
+                        android:textSize="15.4sp"
+                        android:fontFamily="@font/open_sans_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--DETECTION-->
+            <TextView
+                android:id="@+id/detection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DETECTION"
+                android:textSize="26sp"
+                android:textColor="@color/my_blue"
+                android:textStyle="bold"
+                android:fontFamily="@font/open_sans_bold"
+                android:layout_marginBottom="15dp"/>
+
+            <!-- DICOM to PNG -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/my_gray"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/conversion_image"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/dicom_to_png_headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DICOM to PNG"
+                        android:textSize="26sp"
+                        android:textColor="@color/my_blue"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:id="@+id/dicom_to_png_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Transforming medical images into clear visuals"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/open_sans_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Edit Image -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/my_gray">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_image"
+                    android:scaleType="centerCrop"
+                    android:padding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/edit_image_headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EDIT IMAGE"
+                        android:textSize="26sp"
+                        android:textColor="@color/my_blue"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:id="@+id/edit_image_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enhancing medical imaging for clearer diagnoses"
+                        android:textSize="15.4sp"
+                        android:fontFamily="@font/open_sans_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
