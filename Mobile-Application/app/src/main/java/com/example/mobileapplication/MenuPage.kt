@@ -1,7 +1,9 @@
 package com.example.mobileapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
@@ -12,5 +14,17 @@ class MenuPage : AppCompatActivity() {
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         supportActionBar?.hide()
         setContentView(R.layout.activity_menu_page)
+    }
+    fun goToDICOM_Conversion(view : View){
+        startActivity(Intent(this, DicomToPNG::class.java))
+    }
+    fun goToEditImage(view : View){
+        startActivity(Intent(this, EditImage::class.java))
+    }
+    fun goToRealTime(view : View){
+        startActivity(Intent(this, RealTimeDetection::class.java))
+    }
+    fun goToImageDetection(view : View){
+        startActivity(Intent(this, ImageDetection::class.java))
     }
 }

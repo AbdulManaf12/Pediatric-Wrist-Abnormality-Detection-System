@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PEDIATRIC WRIST ANOMALY DETECTION"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:padding="10dp"
         android:textAlignment="center"
@@ -27,7 +27,6 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,15 +52,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@color/my_gray"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:onClick="goToDICOM_Conversion">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/conversion_image"
                     android:scaleType="centerCrop"
-                    android:padding="8dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="5dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="DICOM to PNG"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
@@ -95,14 +94,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/my_gray">
+                android:background="@color/my_gray"
+                android:onClick="goToEditImage">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit_image"
-                    android:scaleType="centerCrop"
-                    android:padding="8dp"/>
+                    android:scaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -115,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="EDIT IMAGE"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
@@ -150,14 +149,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@color/my_gray"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="5dp"
+                android:onClick="goToRealTime">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/realtime"
-                    android:scaleType="centerCrop"
-                    android:layout_marginBottom="10dp"/>
+                    android:scaleType="centerCrop"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="REAL-TIME"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
@@ -186,19 +185,20 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Edit Image -->
+            <!-- X-RAY Image -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/my_gray">
+                android:background="@color/my_gray"
+                android:padding="4dp"
+                android:onClick="goToImageDetection">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/imagedetection"
-                    android:scaleType="centerCrop"
-                    android:padding="8dp"/>
+                    android:scaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -211,7 +211,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="X-RAY IMAGE"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
