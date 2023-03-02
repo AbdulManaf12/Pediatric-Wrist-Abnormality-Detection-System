@@ -141,9 +141,10 @@
                 android:textColor="@color/my_blue"
                 android:textStyle="bold"
                 android:fontFamily="@font/open_sans_bold"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"/>
 
-            <!-- DICOM to PNG -->
+            <!-- Real-Time -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,9 +155,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/conversion_image"
+                    android:src="@drawable/realtime"
                     android:scaleType="centerCrop"
-                    android:padding="8dp"
                     android:layout_marginBottom="10dp"/>
 
                 <LinearLayout
@@ -166,10 +166,10 @@
                     android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/dicom_to_png_headline"
+                        android:id="@+id/Real_time_headline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="DICOM to PNG"
+                        android:text="REAL-TIME"
                         android:textSize="26sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
@@ -177,10 +177,10 @@
                         android:layout_marginBottom="5dp"/>
 
                     <TextView
-                        android:id="@+id/dicom_to_png_description"
+                        android:id="@+id/realtime_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Transforming medical images into clear visuals"
+                        android:text="Empowering swift and accurate decision-making"
                         android:textSize="16sp"
                         android:fontFamily="@font/open_sans_bold"/>
                 </LinearLayout>
@@ -196,7 +196,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/edit_image"
+                    android:src="@drawable/imagedetection"
                     android:scaleType="centerCrop"
                     android:padding="8dp"/>
 
@@ -207,10 +207,10 @@
                     android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/edit_image_headline"
+                        android:id="@+id/image_detection_headline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="EDIT IMAGE"
+                        android:text="X-RAY IMAGE"
                         android:textSize="26sp"
                         android:textColor="@color/my_blue"
                         android:textStyle="bold"
@@ -218,10 +218,10 @@
                         android:layout_marginBottom="5dp"/>
 
                     <TextView
-                        android:id="@+id/edit_image_description"
+                        android:id="@+id/image_detection_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Enhancing medical imaging for clearer diagnoses"
+                        android:text="Unlocking critical insights through X-ray  image detection"
                         android:textSize="15.4sp"
                         android:fontFamily="@font/open_sans_bold"/>
                 </LinearLayout>
