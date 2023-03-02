@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MobileApplication"
         tools:targetApi="31">
         <activity
+            android:name=".RealTimeDetection"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
