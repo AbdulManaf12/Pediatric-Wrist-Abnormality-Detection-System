@@ -21,4 +21,14 @@
         android:background="@color/my_blue"
         android:fontFamily="@font/open_sans_bold"/>
 
+    <Button
+        android:id="@+id/selectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT DICOM FILE"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:onClick="selectDicomFile"/>
+
+
 </LinearLayout>
