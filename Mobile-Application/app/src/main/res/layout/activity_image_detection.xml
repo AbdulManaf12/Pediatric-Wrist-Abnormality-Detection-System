@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ImageDetection"
@@ -20,5 +21,55 @@
         android:textColor="@color/my_gray"
         android:background="@color/my_blue"
         android:fontFamily="@font/open_sans_bold"/>
+
+    <LinearLayout
+        android:id="@+id/image_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:id="@+id/dummy_image"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:background="@color/my_gray"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:onClick="selectImage" />
+
+        <com.ortiz.touchview.TouchImageView
+            android:id="@+id/preview_image"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:background="@color/my_gray"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:onClick="selectImage" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/selection_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select an image"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/open_sans_bold"
+        android:layout_marginTop="-270dp"
+        android:onClick="selectImage"/>
+
+    <Button
+        android:id="@+id/predict_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Predict"
+        android:layout_marginTop="250dp"
+        android:onClick="predict"
+        android:visibility="invisible"/>
 
 </LinearLayout>

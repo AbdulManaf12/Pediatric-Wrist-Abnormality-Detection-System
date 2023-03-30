@@ -21,44 +21,4 @@
         android:background="@color/my_blue"
         android:fontFamily="@font/open_sans_bold"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="350dp"
-        android:background="@color/my_gray"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:onClick="selectDicomFile"/>
-
-    <Button
-        android:id="@+id/selectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select DICOM file"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_marginTop="-200dp"
-        android:onClick="selectDicomFile"/>
-
-    <Button
-        android:id="@+id/convertButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Convert to PNG and save"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:onClick="convertAndSave"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/previewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preview PNG"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:onClick="preview"
-        android:visibility="gone"/>
 </LinearLayout>
