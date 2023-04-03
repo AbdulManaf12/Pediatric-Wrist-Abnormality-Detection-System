@@ -85,7 +85,7 @@
           <ul>
             <li><a class="nav-link scrollto" href="/">Home</a></li>
 
-            <li><a class="nav-link scrollto" href="#research">Research</a></li>
+            <li><a class="nav-link scrollto" href="/#cta">Research</a></li>
             <li>
               <a class="nav-link scrollto" href="#documentation"
                 >Documentation</a
@@ -160,6 +160,7 @@
           </table>
 
           <hr />
+          {% if annotations %}
           <h5 class="report-heading">Abnormalities Detected</h5>
 
           <table class="anomaly-table">
@@ -192,7 +193,12 @@
             </tr>
             {% endif %} {% endfor %}
           </table>
-
+          {% else %}
+          <h5 style="text-align: center">
+            <span class="normal">Normal exam</span> - no evidence of any
+            <span class="abnormalities">wrist abnormalities</span>.
+          </h5>
+          {% endif %}
           <p class="disclaimer">
             The medical scan was processed using an artificial intelligence
             algorithm that analyzed the image for abnormalities. While the
@@ -414,20 +420,6 @@
               </form>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>Medicio</span></strong
-          >. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
     </footer>
