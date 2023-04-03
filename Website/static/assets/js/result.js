@@ -94,11 +94,14 @@ function changeSlide(elm) {
 }
 
 document.getElementById("print-button").addEventListener("click", function () {
-  var printableSection = document.getElementById("printable-section").innerHTML;
+  var printableSection = document.getElementById("printable-section").cloneNode(true);
+  var checkbox = printableSection.querySelector("#image-type");
+  checkbox.parentNode.removeChild(checkbox);
   var originalContent = document.body.innerHTML;
-  document.body.innerHTML = printableSection;
+  document.body.innerHTML = printableSection.outerHTML;
   window.print();
   document.body.innerHTML = originalContent;
 });
+
 
 
