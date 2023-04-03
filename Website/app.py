@@ -14,6 +14,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 def index():
     return render_template('index.html')
 
+@app.route("/documentation")
+def documentation():
+    return render_template('documentation.html')
+
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     remove_files()
@@ -26,7 +30,7 @@ def predict():
         file = request.files.get('input-image')
 
         if file and allowed_file(file.filename):
-            filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
+            filename = f"static/input-image.png"
             file.save(filename)
             os.chdir('static/')
             model = YOLO('YOLOv8x-best.pt')
@@ -35,7 +39,10 @@ def predict():
 
         now = datetime.datetime.now()
         date_of_scan = now.strftime("%B %d, %Y")
-        annotations = yolo_to_dict('static/runs/detect/predict/labels/input-image.txt', 'static/runs/detect/predict/input-image.png')
+        if os.path.exists('static/runs/detect/predict/labels/input-image.txt'):
+            annotations = yolo_to_dict('static/runs/detect/predict/labels/input-image.txt', 'static/runs/detect/predict/input-image.png')
+        else:
+            annotations = ''
         return render_template('result.html', 
                             patient_name=patient_name, 
                             age=age, 
@@ -52,14 +59,11 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def remove_files():
-    for subdir in os.listdir('static/'):
-        subdir_path = os.path.join('static/', subdir)
-        if 'exp' in subdir and os.path.isdir(subdir_path):
-            shutil.rmtree(subdir_path)
-
-    if os.path.exists('input-image.png'):
-        os.remove('input-image.png')
+    if os.path.isdir('static/runs/'):
+        shutil.rmtree('static/runs')
+    if os.path.exists('static/input-image.png'):
+        os.remove('static/input-image.png')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) 

@@ -791,6 +791,14 @@ section {
   background-size: cover;
   padding: 60px 0;
 }
+.cta img {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 800px; /* change this value to adjust the maximum width of the image */
+  border-radius: 12px;
+  box-shadow: 0px 0px 3em #3fbbc0;
+}
 
 .cta h3 {
   font-size: 28px;
@@ -2124,4 +2132,15 @@ input:checked + .slider:before {
   to {
     transform: rotate(360deg);
   }
+}
+
+.normal {
+  font-weight: bold;
+  color: #00bfff;
+  text-transform: uppercase;
+}
+
+.abnormalities {
+  font-weight: normal;
+  text-transform: capitalize;
 }
