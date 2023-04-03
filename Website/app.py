@@ -1,9 +1,9 @@
 from flask import Flask, request, render_template
-from inference import run
 from extract_bbox_info import yolo_to_dict
-import os
-import shutil
+from ultralytics import YOLO
 import datetime
+import shutil
+import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './static'
@@ -28,11 +28,14 @@ def predict():
         if file and allowed_file(file.filename):
             filename = f"{app.config['UPLOAD_FOLDER']}/input-image.png"
             file.save(filename)
-        
-        run()
+            os.chdir('static/')
+            model = YOLO('YOLOv8x-best.pt')
+            result = model('input-image.png', save=True, save_txt=True)
+            os.chdir('../')
+
         now = datetime.datetime.now()
         date_of_scan = now.strftime("%B %d, %Y")
-        annotations = yolo_to_dict('static/exp/labels/input-image.txt', 'static/exp/input-image.png')
+        annotations = yolo_to_dict('static/runs/detect/predict/labels/input-image.txt', 'static/runs/detect/predict/input-image.png')
         return render_template('result.html', 
                             patient_name=patient_name, 
                             age=age, 
