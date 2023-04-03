@@ -122,7 +122,7 @@
           <div id="slideshow-items-container">
             <img
               class="slideshow-items active predicted-image"
-              src="{{url_for('static', filename='exp/input-image.png')}}"
+              src="{{url_for('static', filename='runs/detect/predict/input-image.png')}}"
               alt="error - image is not loading"
             />
           </div>
@@ -457,10 +457,11 @@
       const myImg = document.getElementsByClassName("predicted-image")[0];
       toggleBtn.addEventListener("click", function () {
         console.log("yes");
-        if (myImg.src.includes("exp/input-image.png")) {
+        if (myImg.src.includes("runs/detect/predict/input-image.png")) {
           myImg.src = "{{url_for('static', filename='input-image.png')}}";
         } else {
-          myImg.src = "{{url_for('static', filename='exp/input-image.png')}}";
+          myImg.src =
+            "{{url_for('static', filename='runs/detect/predict/input-image.png')}}";
         }
       });
     </script>
