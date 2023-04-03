@@ -6,10 +6,7 @@ import shutil
 import os
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './static'
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-# comment
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -34,7 +31,7 @@ def predict():
             file.save(filename)
             os.chdir('static/')
             model = YOLO('YOLOv8x-best.pt')
-            result = model('input-image.png', save=True, save_txt=True)
+            model('input-image.png', save=True, save_txt=True)
             os.chdir('../')
 
         now = datetime.datetime.now()
