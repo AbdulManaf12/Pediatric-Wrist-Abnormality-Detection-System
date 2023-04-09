@@ -1,7 +1,9 @@
 from flask import Flask, request, render_template
 from extract_bbox_info import yolo_to_dict
 from ultralytics import YOLO
+from PIL import Image
 import datetime
+import pydicom
 import shutil
 import os
 
@@ -12,8 +14,12 @@ def index():
     return render_template('index.html')
 
 @app.route("/documentation")
-def documentation():
+def documentation():        
     return render_template('documentation.html')
+
+@app.route("/conversion_tool")
+def conversion_tool():        
+    return render_template('dicom_to_png.html')
 
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
@@ -61,6 +67,11 @@ def remove_files():
     if os.path.exists('static/input-image.png'):
         os.remove('static/input-image.png')
 
+def dicom_to_png(input_file, output_file):
+    # dicom_data = pydicom.dcmread(input_file)
+    # img = Image.fromarray(dicom_data.pixel_array)
+    # img.save(output_file)
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True) 
