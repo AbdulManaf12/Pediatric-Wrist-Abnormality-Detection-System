@@ -37,7 +37,6 @@ Presented below is a summary of the mean average precision (mAP) scores achieved
   
 ## Acknowledgement
 
-## License
 
 ## Contact Info
 For any questions or feedback regarding this project, please feel free to contact the authors:
