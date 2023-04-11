@@ -2,7 +2,9 @@
 
 An application that detect anomalies in the X-Ray image with accuracy.
 
-<img src="static/assets/gif/interface.gif" alt="X-ray image abnonormality detection" width="512">
+<div align="center">
+  <img width="512" src="static/assets/gif/interface.gif">
+</div>
 
 ## Introduction
 
@@ -13,10 +15,13 @@ The proposed project aims to provide a solution to the scarcity of radiologists 
 ## User Instruction
 
 ## Results
+In this section, we present a comprehensive analysis of the performance of various models for wrist abnormality detection on the GRAZPEDWRI-DX dataset. We conducted a total of 23 detection procedures using different variants of each YOLO model and a two-stage detection model (Faster R-CNN) on a test set consisting of 1016 randomly selected samples. The performance of each model was evaluated using metrics such as precision, recall, and mean average precision (mAP).
 
-<details><summary>YOLOv8</summary>
+Below are the [weights](#weights_yolov8) of the YOLOv8 model along with their corresponding results:
 
-| Model variants                                                                               | size<br><sup>(pixels) | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 |
+### YOLOv8 Weights
+
+| Model variants<a name="weights_yolov8"></a>                                          | size<br><sup>(pixels) | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 |
 | ------------------------------------------------------------------------------------ | --------------------- | ----------|--------|---------|--------------|
 | [YOLOv8n](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8n.pt) | 640             | 0.73 	   | 0.58 	| 0.59    | 0.36         |         
 | [YOLOv8s](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8s.pt) | 640             | 0.72 	   | 0.63 	| 0.65    | 0.39         |     
@@ -24,8 +29,12 @@ The proposed project aims to provide a solution to the scarcity of radiologists 
 | [YOLOv8l](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8l.pt) | 640             | 0.74 	   | 0.60 	| 0.62    | 0.41         |     
 | [YOLOv8x](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8x.pt) | 640             | 0.79 	   | 0.64 	| 0.77    | 0.53         |  
 
-</details>
+Presented below is a summary of the mean average precision (mAP) scores achieved by all YOLO variants and Faster R-CNN, for both the fracture class and all classes combined.
+<div align="center">
+  <img width="70%" src="static/assets/img/mAPAll.png">
+</div>
 
+  
 ## Acknowledgement
 
 ## License
