@@ -14,6 +14,18 @@ The proposed project aims to provide a solution to the scarcity of radiologists 
 
 ## Results
 
+<details><summary>YOLOv8</summary>
+
+| Model variants                                                                               | size<br><sup>(pixels) | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 |
+| ------------------------------------------------------------------------------------ | --------------------- | ----------|--------|---------|--------------|
+| [YOLOv8n](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8n.pt) | 640             | 0.73 	   | 0.58 	| 0.59    | 0.36         |         
+| [YOLOv8s](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8s.pt) | 640             | 0.72 	   | 0.63 	| 0.65    | 0.39         |     
+| [YOLOv8m](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8m.pt) | 640             | 0.60 	   | 0.60 	| 0.56    | 0.36         |     
+| [YOLOv8l](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8l.pt) | 640             | 0.74 	   | 0.60 	| 0.62    | 0.41         |     
+| [YOLOv8x](https://github.com/AbdulManaf12/FYP-Project/releases/download/v0.0.0/YOLOv8x.pt) | 640             | 0.79 	   | 0.64 	| 0.77    | 0.53         |  
+
+</details>
+
 ## Acknowledgement
 
 ## License
