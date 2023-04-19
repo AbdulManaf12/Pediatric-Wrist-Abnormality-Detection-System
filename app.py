@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from extract_bbox_info import yolo_to_dict
 from ultralytics import YOLO
 from PIL import Image
+import numpy as np
 import datetime
 import pydicom
 import shutil
@@ -68,10 +69,12 @@ def remove_files():
         os.remove('static/input-image.png')
 
 def dicom_to_png(input_file, output_file):
-    # dicom_data = pydicom.dcmread(input_file)
-    # img = Image.fromarray(dicom_data.pixel_array)
-    # img.save(output_file)
-    pass
+    im = pydicom.dcmread(input_file)
+    im = im.pixel_array.astype(float)
+    rescaled_image = (np.maximum(im, 0)/im.max()) * 255
+    final_image = np.uint8(rescaled_image)
+    final_image = Image.fromarray(final_image)
+    final_image.save(output_file)
 
 if __name__ == "__main__":
     app.run(debug=True) 
