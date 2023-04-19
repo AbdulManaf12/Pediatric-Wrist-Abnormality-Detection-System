@@ -22,6 +22,17 @@ def documentation():
 def conversion_tool():        
     return render_template('dicom_to_png.html')
 
+@app.route("/start_converting", methods=['GET', 'POST'])
+def start_converting():        
+    if request.method == 'POST':
+        print('yes')
+        remove_files()
+        file = request.files.get('input-image')
+        if file:
+            file.save('static/convert-file.dicom')
+            dicom_to_png('static/convert-file.dicom', 'static/convert-file.png')
+    return render_template('dicom_to_png.html', file_path='static/convert-file.png')
+
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     remove_files()
@@ -67,6 +78,10 @@ def remove_files():
         shutil.rmtree('static/runs')
     if os.path.exists('static/input-image.png'):
         os.remove('static/input-image.png')
+    if os.path.exists('static/convert-file.dicom'):
+        os.remove('static/convert-file.dicom')
+    if os.path.exists('static/convert-file.png'):
+        os.remove('static/convert-file.png')
 
 def dicom_to_png(input_file, output_file):
     im = pydicom.dcmread(input_file)
