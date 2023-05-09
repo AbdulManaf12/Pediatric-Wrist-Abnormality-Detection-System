@@ -1,5 +1,6 @@
 package com.example.mobileapplication
 
+import Prediction
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +9,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import prediction
-import android.content.Context
-import android.net.Uri
-import java.io.File
-import java.io.FileOutputStream
+import androidx.core.graphics.drawable.toBitmap
 
 class ImageDetection : AppCompatActivity() {
 
@@ -49,42 +46,13 @@ class ImageDetection : AppCompatActivity() {
             val dummy = findViewById<ImageView>(R.id.dummy_image)
             linearLayout.removeView(dummy)
 
-            var obj = prediction()
-            var annotation = imageUri?.let { uriToFile(applicationContext, it) }
-                ?.let { obj.getImageData(it) }
+            val obj = Prediction()
+            val annotation = obj.sendImageAndGetJSONData(imageView.drawable.toBitmap())
             println("annotation: ")
             println(annotation)
         }
     }
 
     fun predict(view : View) {
-        val imageView = findViewById<ImageView>(R.id.preview_image)
-        if (imageView.drawable == null) {
-            Toast.makeText(
-                this,
-                "Invalid Input. Before predicting must select image",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-        startActivity(Intent(this, ImageResult::class.java))
-    }
-    fun uriToFile(context: Context, uri: Uri): File {
-        val file = File(context.cacheDir, "temp_image_file.png")
-        val inputStream = context.contentResolver.openInputStream(uri)
-        val outputStream = FileOutputStream(file)
-
-        inputStream?.let {
-            outputStream.use { output ->
-                val buffer = ByteArray(4 * 1024)
-                var read: Int
-                while (inputStream.read(buffer).also { read = it } != -1) {
-                    output.write(buffer, 0, read)
-                }
-                output.flush()
-            }
-            inputStream.close()
-        }
-
-        return file
     }
 }
