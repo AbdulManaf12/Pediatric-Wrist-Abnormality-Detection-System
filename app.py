@@ -80,6 +80,7 @@ def dicom_to_png_api_start_converting():
         if file:
             file.save('static/dicom_to_png_api_convert-file.dicom')
             dicom_to_png('static/dicom_to_png_api_convert-file.dicom', 'static/dicom_to_png_api_convert-file.png')
+            print('yes')
     return render_template('dicom_to_png_api.html', file_path='static/dicom_to_png_api_convert-file.png')
 
 @app.route('/mobile_detection_api')

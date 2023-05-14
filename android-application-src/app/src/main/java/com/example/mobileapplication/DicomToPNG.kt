@@ -29,21 +29,13 @@ class DicomToPNG : AppCompatActivity() {
         )
         supportActionBar?.hide()
         setContentView(R.layout.activity_dicomtopng)
-
         webView = findViewById<View>(R.id.webView) as WebView
-
-        // Configure web settings
         val webSettings: WebSettings = webView.settings
         webSettings.javaScriptEnabled = true
-        webSettings.allowFileAccess = true // Enable file access
-        webSettings.allowFileAccessFromFileURLs = true // Enable file access from file URLs
-        webSettings.allowUniversalAccessFromFileURLs =
-            true // Enable universal access from file URLs
-
-        // Set up WebViewClient
+        webSettings.allowFileAccess = true
+        webSettings.allowFileAccessFromFileURLs = true
+        webSettings.allowUniversalAccessFromFileURLs = true
         webView.webViewClient = WebViewClient()
-
-        // Set up WebChromeClient for progress bar, alert dialogs, etc.
         webView.webChromeClient = object : WebChromeClient() {
             override fun onShowFileChooser(
                 webView: WebView?,
@@ -51,7 +43,6 @@ class DicomToPNG : AppCompatActivity() {
                 fileChooserParams: FileChooserParams?
             ): Boolean {
                 fileUploadCallback = filePathCallback
-
                 if (ContextCompat.checkSelfPermission(
                         this@DicomToPNG,
                         Manifest.permission.READ_EXTERNAL_STORAGE
@@ -65,14 +56,10 @@ class DicomToPNG : AppCompatActivity() {
                 } else {
                     openFileChooser()
                 }
-
                 return true
             }
         }
-
-        // Load the webpage URL
-        val webpageUrl =
-            "https://0f75-111-119-183-51.ngrok-free.app" // Replace with your webpage URL
+        val webpageUrl = "https://95ae-223-123-124-158.ngrok-free.app/dicom_to_png_api_index"
         webView.loadUrl(webpageUrl)
     }
 
