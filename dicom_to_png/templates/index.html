@@ -17,8 +17,7 @@
       <section id="appointment" class="appointment section-bg">
         <div class="container" data-aos="fade-up">
           <div class="section-title">
-            <h2 style="margin-left: 10%">DICOM to PNG</h2>
-            <p style="width: 380px">
+            <p style="width: 350px">
               Convert your medical images from the Digital Imaging and
               Communications in Medicine (DICOM) format to the widely supported
               Portable Network Graphics (PNG) format using our online DICOM to
@@ -60,9 +59,11 @@
               <img class="img-thumbnail mt-5" src="{{file_path}}" width="30%" />
             </a>
           </div>
+          {% if file_path %}
           <p class="d-flex justify-content-center">
             <i>Click image to download</i>
           </p>
+          {% endif %}
         </div>
       </section>
     </main>
