@@ -18,9 +18,6 @@ class MenuPage : AppCompatActivity() {
     fun goToDICOM_Conversion(view : View){
         startActivity(Intent(this, DicomToPNG::class.java))
     }
-    fun goToEditImage(view : View){
-        startActivity(Intent(this, EditImage::class.java))
-    }
     fun goToImageDetection(view : View){
         startActivity(Intent(this, ImageDetection::class.java))
     }
