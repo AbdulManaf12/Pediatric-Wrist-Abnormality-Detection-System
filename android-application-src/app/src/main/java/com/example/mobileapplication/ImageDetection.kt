@@ -1,58 +1,130 @@
 package com.example.mobileapplication
 
-import Prediction
-import android.app.Activity
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.*
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toBitmap
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 class ImageDetection : AppCompatActivity() {
+    private lateinit var webView: WebView
+    private var fileUploadCallback: ValueCallback<Array<Uri>>? = null
+    private var fileUploadPermissionsCode = 1
+    private var selectedFileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         supportActionBar?.hide()
         setContentView(R.layout.activity_image_detection)
+
+        webView = findViewById<View>(R.id.webView) as WebView
+
+        // Configure web settings
+        val webSettings: WebSettings = webView.settings
+        webSettings.javaScriptEnabled = true
+        webSettings.allowFileAccess = true // Enable file access
+        webSettings.allowFileAccessFromFileURLs = true // Enable file access from file URLs
+        webSettings.allowUniversalAccessFromFileURLs =
+            true // Enable universal access from file URLs
+
+        // Set up WebViewClient
+        webView.webViewClient = WebViewClient()
+
+        // Set up WebChromeClient for progress bar, alert dialogs, etc.
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onShowFileChooser(
+                webView: WebView?,
+                filePathCallback: ValueCallback<Array<Uri>>?,
+                fileChooserParams: FileChooserParams?
+            ): Boolean {
+                fileUploadCallback = filePathCallback
+
+                if (ContextCompat.checkSelfPermission(
+                        this@ImageDetection,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        this@ImageDetection,
+                        arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                        fileUploadPermissionsCode
+                    )
+                } else {
+                    openFileChooser()
+                }
+
+                return true
+            }
+        }
+
+        // Load the webpage URL
+        val webpageUrl =
+            "https://65da-111-119-183-51.ngrok-free.app" // Replace with your webpage URL
+        webView.loadUrl(webpageUrl)
     }
 
-    fun selectImage(view: View) {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "image/*"
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/jpeg", "image/png"))
-        startActivityForResult(intent, 36)
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 36 && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val imageUri = data.data
-
-            val imageView = findViewById<ImageView>(R.id.preview_image)
-            imageView.setImageURI(imageUri)
-
-            val placeholder = findViewById<TextView>(R.id.selection_text)
-            placeholder.visibility = View.INVISIBLE
-
-            val predict_btn = findViewById<Button>(R.id.predict_btn)
-            predict_btn.visibility = View.VISIBLE
-
-            val linearLayout = findViewById<LinearLayout>(R.id.image_layout)
-            val dummy = findViewById<ImageView>(R.id.dummy_image)
-            linearLayout.removeView(dummy)
-
-            val obj = Prediction()
-            val annotation = obj.sendImageAndGetJSONData(imageView.drawable.toBitmap())
-            println("annotation: ")
-            println(annotation)
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
         }
     }
 
-    fun predict(view : View) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == fileUploadPermissionsCode) {
+            if (resultCode == RESULT_OK) {
+                selectedFileUri = data?.data
+                fileUploadCallback?.onReceiveValue(arrayOf(selectedFileUri!!))
+                fileUploadCallback = null
+            } else {
+                fileUploadCallback?.onReceiveValue(null)
+                fileUploadCallback = null
+            }
+        }
+    }
+
+    private fun openFileChooser() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.type = "image/*"
+        startActivityForResult(
+            Intent.createChooser(intent, "Choose File"),
+            fileUploadPermissionsCode
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == fileUploadPermissionsCode) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openFileChooser()
+            } else {
+                fileUploadCallback?.onReceiveValue(null)
+                fileUploadCallback = null
+            }
+        }
     }
 }

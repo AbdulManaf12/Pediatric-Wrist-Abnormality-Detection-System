@@ -21,9 +21,6 @@ class MenuPage : AppCompatActivity() {
     fun goToEditImage(view : View){
         startActivity(Intent(this, EditImage::class.java))
     }
-    fun goToRealTime(view : View){
-        startActivity(Intent(this, RealTimeDetection::class.java))
-    }
     fun goToImageDetection(view : View){
         startActivity(Intent(this, ImageDetection::class.java))
     }

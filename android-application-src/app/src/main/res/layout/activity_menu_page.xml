@@ -89,47 +89,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Edit Image -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/my_gray"
-                android:onClick="goToEditImage">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/edit_image"
-                    android:scaleType="centerCrop" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/edit_image_headline"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="EDIT IMAGE"
-                        android:textSize="22sp"
-                        android:textColor="@color/my_blue"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/open_sans_bold"
-                        android:layout_marginBottom="5dp"/>
-
-                    <TextView
-                        android:id="@+id/edit_image_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Enhancing medical imaging for clearer diagnoses"
-                        android:textSize="15.4sp"
-                        android:fontFamily="@font/open_sans_bold"/>
-                </LinearLayout>
-            </LinearLayout>
-
             <!--DETECTION-->
             <TextView
                 android:id="@+id/detection"
@@ -142,48 +101,6 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"/>
-
-            <!-- Real-Time -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/my_gray"
-                android:layout_marginBottom="5dp"
-                android:onClick="goToRealTime">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/realtime"
-                    android:scaleType="centerCrop"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/Real_time_headline"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="REAL-TIME"
-                        android:textSize="22sp"
-                        android:textColor="@color/my_blue"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/open_sans_bold"
-                        android:layout_marginBottom="5dp"/>
-
-                    <TextView
-                        android:id="@+id/realtime_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Empowering swift and accurate decision-making"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/open_sans_bold"/>
-                </LinearLayout>
-            </LinearLayout>
 
             <!-- X-RAY Image -->
             <LinearLayout
