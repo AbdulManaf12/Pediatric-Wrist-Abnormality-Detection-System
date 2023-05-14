@@ -82,6 +82,30 @@ def dicom_to_png_api_start_converting():
             dicom_to_png('static/dicom_to_png_api_convert-file.dicom', 'static/dicom_to_png_api_convert-file.png')
     return render_template('dicom_to_png_api.html', file_path='static/dicom_to_png_api_convert-file.png')
 
+@app.route('/mobile_detection_api')
+def detection_api_index():
+    return render_template('android_detection_index.html')
+
+@app.route('/mobile_detection_api_predict', methods=['GET', 'POST'])
+def detection_api_predict():
+    remove_files()
+    if request.method == 'POST':
+        file = request.files.get('file')
+
+        if file:
+            filename = f"static/detection_api_input-image.png"
+            file.save(filename)
+            os.chdir('static/')
+            if not os.path.exists('API_DIR'):
+                os.mkdir('API_DIR')
+            os.chdir('API_DIR/')
+            model = YOLO('../YOLOv8x-best.pt')
+            model('../detection_api_input-image.png', save=True)
+            os.chdir('../../')
+
+        return render_template('android_detection_result.html')
+    return render_template('android_detection_index.html')
+
 def allowed_file(filename):
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
     return '.' in filename and \
@@ -90,6 +114,8 @@ def allowed_file(filename):
 def remove_files():
     if os.path.isdir('static/runs/'):
         shutil.rmtree('static/runs')
+    if os.path.isdir('static/API_DIR/runs/'):
+        shutil.rmtree('static/API_DIR/runs')
     if os.path.exists('static/input-image.png'):
         os.remove('static/input-image.png')
     if os.path.exists('static/convert-file.dicom'):
@@ -100,6 +126,8 @@ def remove_files():
         os.remove('static/dicom_to_png_api_convert-file.dicom')
     if os.path.exists('static/dicom_to_png_api_convert-file.png'):
         os.remove('static/dicom_to_png_api_convert-file.png')
+    if os.path.exists('static/detection_api_input-image.png'):
+        os.remove('static/detection_api_input-image.png')
 
 def dicom_to_png(input_file, output_file):
     im = pydicom.dcmread(input_file)
