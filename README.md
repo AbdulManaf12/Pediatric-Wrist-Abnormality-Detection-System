@@ -18,7 +18,7 @@ git clone https://github.com/AbdulManaf12/FYP-Project.git
 
 2. Navigate to the project directory:
 ```bash
-cd pediatric_wrist_abnormality_detection-end-to-end-implementation
+cd FYP-Project
 ```
 
 3. Create a virtual environment for the project:
