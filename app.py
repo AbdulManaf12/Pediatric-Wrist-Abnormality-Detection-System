@@ -68,6 +68,20 @@ def predict():
 
     return render_template('index.html')
 
+@app.route('/dicom_to_png_api_index')
+def dicom_to_png_api_index():
+    return render_template('dicom_to_png_api.html')
+
+@app.route("/dicom_to_png_api_start_converting", methods=['GET', 'POST'])
+def dicom_to_png_api_start_converting():        
+    if request.method == 'POST':
+        remove_files()
+        file = request.files.get('input-image')
+        if file:
+            file.save('static/dicom_to_png_api_convert-file.dicom')
+            dicom_to_png('static/dicom_to_png_api_convert-file.dicom', 'static/dicom_to_png_api_convert-file.png')
+    return render_template('dicom_to_png_api.html', file_path='static/dicom_to_png_api_convert-file.png')
+
 def allowed_file(filename):
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
     return '.' in filename and \
@@ -82,6 +96,10 @@ def remove_files():
         os.remove('static/convert-file.dicom')
     if os.path.exists('static/convert-file.png'):
         os.remove('static/convert-file.png')
+    if os.path.exists('static/dicom_to_png_api_convert-file.dicom'):
+        os.remove('static/dicom_to_png_api_convert-file.dicom')
+    if os.path.exists('static/dicom_to_png_api_convert-file.png'):
+        os.remove('static/dicom_to_png_api_convert-file.png')
 
 def dicom_to_png(input_file, output_file):
     im = pydicom.dcmread(input_file)
