@@ -13,12 +13,12 @@ To run this machine learning project on Flask, you need to follow these steps:
 
 1. Clone the project repository from GitHub:
 ```bash
-git clone https://github.com/ammarlodhi255/pediatric_wrist_abnormality_detection-end-to-end-implementation.git
+git clone https://github.com/AbdulManaf12/FYP-Project.git
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd pediatric_wrist_abnormality_detection-end-to-end-implementation
+cd FYP-Project
 ```
 
 3. Create a virtual environment for the project:
@@ -78,7 +78,7 @@ We also extend our thanks to Mam Faryal Shamsi, Saif Hassan, and Babar Shah, the
 
 We would also like to thank our research supervisors, Dr. Sher Muhammad Daudpota (Sukkur IBA, Pakistan), Ali Shariq (NTNU Norway), and Zenun Kastrati (LNU Sweden), for their support and encouragement throughout our research and development process.
 
-Finally, we would like to acknowledge our fellow team member, Abdul Manaf, for his contributions and collaboration throughout the project.
+Finally, we would like to acknowledge our fellow team member, Ammar Ahmed, for his contributions and collaboration throughout the project.
 
 We also extend our thanks to all those who have provided resources and support to us during the project, including open-source libraries, datasets, and software.
 
