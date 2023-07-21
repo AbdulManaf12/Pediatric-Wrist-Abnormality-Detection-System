@@ -58,13 +58,15 @@ def predict():
             annotations = yolo_to_dict('static/runs/detect/predict/labels/input-image.txt', 'static/runs/detect/predict/input-image.png')
         else:
             annotations = ''
+        timestamp = now.strftime('%Y%m%d%H%M%S')
         return render_template('result.html', 
                             patient_name=patient_name, 
                             age=age, 
                             gender=gender,
                             side=side,projection=projection,
                             date_of_scan=date_of_scan, 
-                            annotations=annotations)
+                            annotations=annotations,
+                            timestamp=timestamp)
 
     return render_template('index.html')
 
