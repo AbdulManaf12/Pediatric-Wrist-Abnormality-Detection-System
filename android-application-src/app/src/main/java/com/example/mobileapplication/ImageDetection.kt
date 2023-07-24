@@ -63,7 +63,7 @@ class ImageDetection : AppCompatActivity() {
             }
         }
 
-        val webpageUrl = "https://95ae-223-123-124-158.ngrok-free.app/mobile_detection_api_predict"
+        val webpageUrl = resources.getString(R.string.server_url) + "/mobile_detection_api_predict"
         webView.loadUrl(webpageUrl)
     }
 

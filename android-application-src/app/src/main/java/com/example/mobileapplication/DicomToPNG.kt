@@ -59,7 +59,7 @@ class DicomToPNG : AppCompatActivity() {
                 return true
             }
         }
-        val webpageUrl = "https://95ae-223-123-124-158.ngrok-free.app/dicom_to_png_api_index"
+        val webpageUrl = resources.getString(R.string.server_url) + "/dicom_to_png_api_index"
         webView.loadUrl(webpageUrl)
     }
 
