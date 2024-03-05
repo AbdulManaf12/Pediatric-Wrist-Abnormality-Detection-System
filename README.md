@@ -1,4 +1,4 @@
-# Pediatric Wrist Abnormality Detection System
+# Enhancing Wrist Abnormality Detection with YOLO: Analysis of State-of-the-Art Single-Stage Detection Models
 
 <div align="center">
   <img width="512" src="static/assets/gif/interface.gif">
