@@ -48,7 +48,7 @@ def predict():
             filename = f"static/input-image.png"
             file.save(filename)
             os.chdir('static/')
-            model = YOLO('YOLOv8x-best.pt')
+            model = YOLO('YOLOv8n.pt')
             model('input-image.png', save=True, save_txt=True)
             os.chdir('../')
 
